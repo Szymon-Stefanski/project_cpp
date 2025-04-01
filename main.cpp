@@ -12,7 +12,7 @@ int main() {
     int index = 0;
 
     do {
-        cout << "1. Display items from list. " << endl;
+        cout << "1. Display items from the list. " << endl;
         cout << "2. Add item to the list. " << endl;
         cout << "3. Delete item from the list. " << endl;
         cout << "4. Edit item from the list. " << endl;
@@ -45,9 +45,18 @@ int main() {
             break;
 
             case 4:
-                cout << "Edit item form the list: " << endl;
+                cout << "Edit item from the list: " << endl;
+                cout << "Which item do you want to edit? Please enter a number: " << endl;
+                cin >> number;
+                cout << "Add a new item to the list: " << endl;
+                cin >> items[number];
             print();
             break;
+
+            default:
+                cout << "Invalid option. Try again." << endl;
+                cin >> option;
+                break;
         }
     } while (option != 5);
 
