@@ -3,6 +3,7 @@
 #include <fstream>
 using namespace std;
 
+
 void print() {
     cout << "\n" << endl;
 }
@@ -58,22 +59,53 @@ int main() {
                 break;
             }
 
-            case 3:
+            case 3: {
                 int number;
-                cout << "Delete an item from the list: " << endl;
-                cout << "Which item do you want to delete? Please enter a number: " << endl;
+                cout << "Which item do you want to delete? Enter number: ";
                 cin >> number;
-                items[number] = "";
+                cin.ignore();
+
+                if (number > 0 && number <= index) {
+                    items[number - 1] = "";
+
+                    ofstream Wrfile("items.txt");
+                    for (int i = 0; i < index; i++) {
+                        if (!items[i].empty()) {
+                            Wrfile << items[i] << endl;
+                        }
+                    }
+                    Wrfile.close();
+                } else {
+                    cout << "Invalid number!";
+                }
                 print();
                 break;
+            }
 
-            case 4:
-                cout << "Edit an item from the list: " << endl;
-                cout << "Which item do you want to edit? Please enter a number: " << endl;
+            case 4: {
+                int number;
+                cout << "Which item do you want to edit? Enter number: ";
                 cin >> number;
-                cout << "Add a new item to the list: " << endl;
-                cin >> items[number];
+                cin.ignore();
+
+                if (number > 0 && number <= index) {
+                    cout << "Enter new item: ";
+                    getline(cin, items[number - 1]);
+
+                    ofstream Wrfile("items.txt");
+                    for (int i = 0; i < index; i++) {
+                        Wrfile << items[i] << endl;
+                    }
+                    Wrfile.close();
+                } else {
+                    cout << "Invalid number!";
+                }
                 print();
+                break;
+            }
+
+            case 5:
+                cout << "Exiting..." << endl;
                 break;
 
             default:
