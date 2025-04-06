@@ -1,7 +1,14 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-using namespace std;
+
+using std::cout;
+using std::cin;
+using std::endl;
+using std::string;
+using std::ifstream;
+using std::ofstream;
+using std::ios;
 
 
 void print() {
